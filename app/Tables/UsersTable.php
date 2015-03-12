@@ -10,7 +10,7 @@ namespace App\Tables;
 
 use App\App;
 
-class Table {
+class UsersTable extends Table{
 
 
 
