@@ -1,5 +1,7 @@
 <?php
 use App\Tables\Article;
+
+\App\App::setTitle("Accueil");
 ?>
 
 <div class="row">

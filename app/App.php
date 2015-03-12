@@ -17,6 +17,7 @@ class App {
     const DB_HOST = 'localhost';
 
     private static $database;
+    private static $title = 'Mon super blog';
 
 
     public static function getDb() {
@@ -31,6 +32,17 @@ class App {
         header("HTTP/1.0 404 Not Found");
         header("Location: index.php?page=404");
 
+    }
+
+    public static function getTitle() {
+
+        return self::$title;
+
+    }
+
+    public static function setTitle($title) {
+
+        self::$title = $title ." | ". self::getTitle();
     }
 
 }

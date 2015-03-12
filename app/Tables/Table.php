@@ -15,19 +15,19 @@ class Table {
     protected static $table;
 
     public static function find($id) {
-        $req = App::getDb()->prepare("
+        $req = static::query("
             SELECT *
             FROM " . static::$table . "
             WHERE id = ?
-        ", [$id], get_called_class(), true);
+        ", [$id], true);
 
         return $req;
     }
 
     public static function getAll() {
-        return App::getDb()->query("
+        return  static::query("
           SELECT *
-          FROM ".static::$table."", get_called_class());
+          FROM ".static::$table."");
     }
 
     public function __get($key) {
