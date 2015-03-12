@@ -1,37 +1,9 @@
+<?php
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+use App\Database;
 
-    <title>Starter Template for Bootstrap</title>
+$db = new Database('base_blog');
 
-    <!-- Bootstrap core CSS -->
-    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
-</head>
+$datas = $db->query('SELECT * FROM articles');
 
-<body>
-
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">Project name</a>
-            </div>
-        </div>
-    </nav>
-
-    <div class="container">
-
-        <div class="starter-template" style="padding-top: 100px">
-            <h1>Bootstrap starter template</h1>
-            <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-        </div>
-
-    </div><!-- /.container -->
-</body>
-</html>
+var_dump($datas);
