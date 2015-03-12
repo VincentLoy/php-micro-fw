@@ -7,14 +7,13 @@
  */
 
 use App\App;
-use App\Config;
 
 require '../app/Autoloader.php';
 
-App\Autoloader::register();
+\App\Autoloader::register();
 
 $app = App::getInstance();
-$app->title = "Titre de test";
 
+$posts = $app->getTable('Posts');
 
-$config = Config::getInstance();
+var_dump($posts->all());

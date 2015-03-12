@@ -6,11 +6,9 @@
  * Time: 15:58
  */
 
-namespace App\Tables;
+namespace App\Table;
 
-use App\App;
-
-class Table {
+class UsersTable extends Table{
 
 
 

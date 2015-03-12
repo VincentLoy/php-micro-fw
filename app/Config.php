@@ -19,8 +19,11 @@ class Config {
     private $settings = [];
     private static $_instance;
 
+    /**
+     *
+     */
     public function __construct() {
-        $this->$settings = require dirname(__DIR__) . '/config/config.php';
+        $this->settings = require dirname(__DIR__) . '/config/config.php';
     }
 
     public function get($key) {

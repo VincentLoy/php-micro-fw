@@ -6,9 +6,7 @@
  * Time: 15:58
  */
 
-namespace App\Tables;
-
-use App\App;
+namespace App\Table;
 
 class PostsTable extends Table {
 
