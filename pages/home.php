@@ -1,9 +1,36 @@
 <?php
+use App\Tables\Article;
+?>
 
-use App\Database;
+<div class="row">
+    <main class="col-sm-8">
+        <?php
 
-$db = new Database('base_blog');
+        foreach(Article::getLast() as $post): ?>
+            <h2>
+                <a href="<?= $post->url; ?>">
+                    <?= $post->title; ?>
+                </a>
+            </h2>
+            <p>
+                <em>
+                    <?= $post->categorie ?>
+                </em>
+            </p>
 
-$datas = $db->query('SELECT * FROM articles');
+            <p>
+                <?= $post->extrait; ?>
+            </p>
+        <?php endforeach; ?>
+    </main>
 
-var_dump($datas);
+    <aside class="col-sm-4">
+        <?php foreach(\App\Tables\Categorie::getAll() as $categorie): ?>
+            <li>
+                <a href="<?= $categorie->url; ?>">
+                    <?= $categorie->title; ?>
+                </a>
+            </li>
+        <?php endforeach ?>
+    </aside>
+</div>

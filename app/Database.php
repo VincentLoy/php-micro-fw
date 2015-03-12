@@ -29,21 +29,50 @@ class Database {
     }
 
     private function getPDO() {
-        $pdo = new PDO('mysql:dbname=base_blog;host=localhost', 'root', '');
-        //permet d'afficher une erreur en cas de pblm avec la requete SQL
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $this->pdo = $pdo;
+        // permet d'avoir UNE SEULE instance de PDO.
+        if($this->pdo === null) {
+            $pdo = new PDO('mysql:dbname=base_blog;host=localhost', 'root', '');
+            //permet d'afficher une erreur en cas de pblm avec la requete SQL
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->pdo = $pdo;
+        }
 
         return $this->pdo;
     }
 
-    public function query($statement) {
+    public function query($statement, $class_name, $one = false) {
 
         $req = $this->getPDO()->query($statement);
-        $datas = $req->fetchAll(PDO::FETCH_OBJ);
+
+        $req->setFetchMode(PDO::FETCH_CLASS, $class_name);
+
+        if($one) {
+            $datas = $req->fetch();
+        }
+        else {
+            $datas = $req->fetchAll();
+        }
 
         return $datas;
+    }
+
+    public function prepare($statement, $attributes, $class_name, $one = false) {
+
+        $req = $this->getPDO()->prepare($statement);
+        $req->execute($attributes);
+
+        $req->setFetchMode(PDO::FETCH_CLASS, $class_name);
+
+        if($one) {
+            $datas = $req->fetch();
+        }
+        else {
+            $datas = $req->fetchAll();
+        }
+
+        return $datas;
+
     }
 
 }
