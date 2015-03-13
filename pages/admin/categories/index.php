@@ -6,15 +6,15 @@
  * Time: 17:02
  */
 
-$posts = App::getInstance()->getTable('Post')->all();
+$categories = App::getInstance()->getTable('Category')->all();
 ?>
 
-<h1>Administrer les articles</h1>
+<h1>Administrer les categories</h1>
 
 <p>
-    <a href="?page=posts.add" class="btn btn-info">
+    <a href="?page=categories.add" class="btn btn-info">
         <i class="fa fa-plus"></i>
-        Ajouter un article
+        Ajouter une catégorie
     </a>
 </p>
 
@@ -27,19 +27,19 @@ $posts = App::getInstance()->getTable('Post')->all();
         </tr>
     </thead>
     <tbody>
-        <?php foreach($posts as $post): ?>
+        <?php foreach($categories as $categoriy): ?>
             <tr>
                 <td>
-                    <?= $post->id; ?>
+                    <?= $categoriy->id; ?>
                 </td>
                 <td>
-                    <?= $post->title; ?>
+                    <?= $categoriy->title; ?>
                 </td>
                 <td>
-                    <a class="btn-primary btn" href="?page=posts.edit&id=<?= $post->id; ?>">Editer</a>
+                    <a class="btn-primary btn" href="?page=categories.edit&id=<?= $categoriy->id; ?>">Editer</a>
 
-                    <form action="?page=posts.delete" method="post" style="display: inline;">
-                        <input type="hidden" name="id" value="<?= $post->id; ?>"/>
+                    <form action="?page=categories.delete" method="post" style="display: inline;">
+                        <input type="hidden" name="id" value="<?= $categoriy->id; ?>"/>
                         <button class="btn btn-danger">
                             <i class="fa fa-trash"></i> Delete
                         </button>
