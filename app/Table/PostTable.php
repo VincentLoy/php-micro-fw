@@ -20,8 +20,7 @@ class PostTable extends Table {
     protected $table = "articles";
 
     /**
-     * Recupere les derniers articles
-     * @return array
+     * @return mixed
      */
    public function last() {
        return $this->query("
@@ -33,13 +32,13 @@ class PostTable extends Table {
    }
 
     /**
-     * Recupere un article avec sa categorie
-     * @param $id int
-     * @return \App\Entity\PostEntity
+     * @param $id
+     * @return mixed
      */
     public function find($id) {
         return $this->query("
-            SELECT articles.id, articles.title, articles.content, articles.date, categories.title as categorie
+            SELECT articles.id, articles.title, articles.content, articles.date, categories.title as
+            categorie, categories.id as categorie_id
             FROM articles
             LEFT JOIN categories ON categorie_id = categories.id
             WHERE articles.id = ?
@@ -47,9 +46,8 @@ class PostTable extends Table {
     }
 
     /**
-     * Recupere tous les articles d'une categorie
-     * @param $id int
-     * @return array
+     * @param $id
+     * @return mixed
      */
     public function lastByCategory($id) {
         return $this->query("

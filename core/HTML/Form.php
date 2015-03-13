@@ -48,11 +48,16 @@ class Form {
      * @return null
      */
     protected function getValue($index) {
+
+        if(is_object($this->data)) {
+            return $this->data->$index;
+        }
+
         return isset($this->data[$index]) ? $this->data[$index] : null;
     }
 
     /**
-     * @param $name
+     * @param $name - nom du champ dans la table
      * @param array $classes
      * @param null $id
      * @param null $placeholder
@@ -60,6 +65,20 @@ class Form {
      * @return string
      */
     public function input($name, $type = 'text',$classes = [], $id = null, $placeholder = null, $isRequired = false) {
+
+        if($type === 'textarea') {
+            return $this->surround(
+                '<label>'.$label.'</label>'.
+                '<textarea '
+                .$this->setId($id).' '
+                .$this->setClass($classes).'
+name=" '
+                .$name .'" '
+                .$this->setPlaceholder($placeholder).' '
+                .$this->setRequired($isRequired).'>'
+                .$this->getValue($name).'</textarea>');
+        }
+
         return $this->surround('<input type="'.$type.'" '
             .$this->setId($id).' '
             .$this->setClass($classes).' name="'

@@ -38,11 +38,11 @@ ob_start();
 if($page === 'home') {
     require ROOT . '/pages/admin/posts/index.php';
 }
-elseif($page === 'post.categorie') {
-    require ROOT . '/pages/admin/posts/categories.php';
+elseif($page === 'posts.edit') {
+    require ROOT . '/pages/admin/posts/edit.php';
 }
-elseif($page === 'post.single') {
-    require ROOT . '/pages/admin/posts/single.php';
+elseif($page === 'posts.add') {
+    require ROOT . '/pages/admin/posts/add.php';
 }
 
 $content = ob_get_clean();

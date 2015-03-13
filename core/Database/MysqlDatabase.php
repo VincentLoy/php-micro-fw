@@ -45,6 +45,14 @@ class MysqlDatabase extends Database {
 
         $req = $this->getPDO()->query($statement);
 
+        if(
+            stripos($statement, 'UPDATE') === 0 ||
+            stripos($statement, 'INSERT') === 0 ||
+            stripos($statement, 'DELETE') === 0
+        ) {
+            return $req;
+        }
+
         if($class_name === null) {
             $req->setFetchMode(PDO::FETCH_OBJ);
         }
@@ -62,10 +70,25 @@ class MysqlDatabase extends Database {
         return $datas;
     }
 
+    /**
+     * @param $statement
+     * @param $attributes
+     * @param null $class_name
+     * @param bool $one
+     * @return array|mixed
+     */
     public function prepare($statement, $attributes, $class_name = null, $one = false) {
 
         $req = $this->getPDO()->prepare($statement);
-        $req->execute($attributes);
+        $res = $req->execute($attributes);
+
+        if(
+            stripos($statement, 'UPDATE') === 0 ||
+            stripos($statement, 'INSERT') === 0 ||
+            stripos($statement, 'DELETE') === 0
+        ) {
+            return $res;
+        }
 
         if($class_name === null) {
             $req->setFetchMode(PDO::FETCH_OBJ);
@@ -83,6 +106,11 @@ class MysqlDatabase extends Database {
 
         return $datas;
 
+    }
+
+
+    public function lastInsertId() {
+        return $this->getPDO()->lastInsertId();
     }
 
 }
