@@ -40,7 +40,7 @@ class Form {
      * @return string
      */
     protected  function surround($html) {
-        return "<{$this->surround}>".$html."</{$this->surround}>"
+        return "<{$this->surround}>".$html."</{$this->surround}>";
     }
 
     /**
@@ -55,10 +55,12 @@ class Form {
      * @param $name
      * @param array $classes
      * @param null $id
+     * @param null $placeholder
+     * @param bool $isRequired
      * @return string
      */
-    public function input($name, $classes = [], $id = null, $placeholder = null, $isRequired = false) {
-        return $this->surround('<input type="text" '
+    public function input($name, $type = 'text',$classes = [], $id = null, $placeholder = null, $isRequired = false) {
+        return $this->surround('<input type="'.$type.'" '
             .$this->setId($id).' '
             .$this->setClass($classes).' name="'
             .$name .'" '
@@ -69,10 +71,12 @@ class Form {
 
     /**
      * @param string $text
+     * @param array $classes
+     * @param null $id
      * @return string
      */
     public function submit($text = 'Envoyer', $classes = [], $id = null) {
-        return $this->surround('<button type="submit" class="'
+        return $this->surround('<button type="submit" '
             .$this->setClass($classes).' '
             .$this->setId($id).'">'.$text.'</button>');
     }
