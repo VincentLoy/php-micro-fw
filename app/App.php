@@ -6,11 +6,10 @@
  * Time: 17:05
  */
 
-namespace App;
-
-
-use App\Database;
-use App\Table\Table;
+use Core\Database;
+use Core\Table\Table;
+use Core\Config;
+use Core\Database\MysqlDatabase;
 
 class App {
 
@@ -28,6 +27,15 @@ class App {
         return self::$_instance;
     }
 
+    public static function load() {
+        session_start();
+
+        require ROOT . '/app/Autoloader.php';
+        App\Autoloader::register();
+        require ROOT . '/core/Autoloader.php';
+        Core\Autoloader::register();
+    }
+
     public function getTable($name) {
 
         $class_name = '\\App\\Table\\'.ucfirst($name).'Table';
@@ -40,8 +48,8 @@ class App {
         //$config = Config::getInstance();
 
         if(is_null($this->db_instance)) {
-            $config = Config::getInstance();
-            $this->db_instance = new Database\MysqlDatabase($config->get('db_name'),$config->get('db_user'),$config->get
+            $config = Config::getInstance(ROOT.'/config/config.php');
+            $this->db_instance = new MysqlDatabase($config->get('db_name'),$config->get('db_user'),$config->get
             ('db_pass'),
                 $config->get
             ('db_host'));

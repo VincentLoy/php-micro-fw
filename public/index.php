@@ -6,14 +6,28 @@
  * Time: 13:45
  */
 
-use App\App;
 
-require '../app/Autoloader.php';
 
-\App\Autoloader::register();
+define('ROOT', dirname(__DIR__));
 
-$app = App::getInstance();
+require ROOT.'/app/App.php';
 
-$posts = $app->getTable('Posts');
+App::load();
 
-var_dump($posts->all());
+
+if(isset($_GET['page'])) {
+
+    $page = $_GET['page'];
+
+}
+else {
+    $page = 'home';
+}
+
+ob_start();
+if($page === 'home') {
+    require ROOT . '/pages/articles/home.php';
+}
+
+$content = ob_get_clean();
+require ROOT . '/pages/templates/default.php';
