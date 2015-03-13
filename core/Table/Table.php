@@ -24,9 +24,13 @@ class Table {
             $parts = explode('\\', get_class($this));
             $class_name = end($parts);
 
-            $this->table= strtolower(str_replace('Table', '', $class_name));
+            $this->table= strtolower(str_replace('Table', '', $class_name) . 's');
 
         }
+    }
+
+    public function find($id) {
+        return $this->query("SELECT * FROM {$this->table} WHERE id = ?", [$id], true);
     }
 
     public function all() {

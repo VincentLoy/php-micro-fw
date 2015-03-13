@@ -26,7 +26,13 @@ else {
 
 ob_start();
 if($page === 'home') {
-    require ROOT . '/pages/articles/home.php';
+    require ROOT . '/pages/posts/home.php';
+}
+elseif($page === 'post.categorie') {
+    require ROOT . '/pages/posts/categories.php';
+}
+elseif($page === 'post.single') {
+    require ROOT . '/pages/posts/single.php';
 }
 
 $content = ob_get_clean();

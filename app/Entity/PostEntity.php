@@ -13,7 +13,7 @@ use Core\Entity\Entity;
 class PostEntity extends Entity{
 
     public function getUrl() {
-        return 'index.php?page=article&id='.$this->id;
+        return 'index.php?page=post.single&id='.$this->id;
     }
 
     public function getExtrait() {
