@@ -7,6 +7,7 @@
  */
 
 
+use Core\Auth\DBAuth;
 
 define('ROOT', dirname(__DIR__));
 
@@ -24,18 +25,24 @@ else {
     $page = 'home';
 }
 
+//Auth
+$app = App::getInstance();
+
+$auth = new DBAuth($app->getDb());
+
+if(!$auth->logged()){
+    $app->forbidden();
+}
+
 ob_start();
 if($page === 'home') {
-    require ROOT . '/pages/posts/home.php';
+    require ROOT . '/pages/admin/posts/index.php';
 }
 elseif($page === 'post.categorie') {
-    require ROOT . '/pages/posts/categories.php';
+    require ROOT . '/pages/admin/posts/categories.php';
 }
 elseif($page === 'post.single') {
-    require ROOT . '/pages/posts/single.php';
-}
-elseif($page === 'login') {
-    require ROOT . '/pages/posts/single.php';
+    require ROOT . '/pages/admin/posts/single.php';
 }
 
 $content = ob_get_clean();
