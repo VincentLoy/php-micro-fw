@@ -7,6 +7,16 @@
  */
 
 $categories = App::getInstance()->getTable('Category')->all();
+
+if(isset($_GET['msg']) && $_GET['msg'] == 'cat-error') {
+    ?>
+    <div class="alert alert-warning" role="alert">
+        Vous ne pouvez pas supprimer cette categorie
+    </div>
+    <?php
+}
+
+
 ?>
 <ul class="nav nav-tabs">
     <li role="presentation"><a href="admin.php">Articles</a></li>

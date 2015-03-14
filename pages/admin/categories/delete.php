@@ -8,9 +8,25 @@
 
 use Core\HTML\BootstrapForm;
 
-$postTable = App::getInstance()->getTable('Category');
+$categoriesTable = App::getInstance()->getTable('Category');
+
+if($_POST['id'] == 6) {
+    header("Location: admin.php?page=categories.index&msg=cat-error");
+}
 
 if(!empty($_POST)) {
-    $result = $postTable->delete($_POST['id']);
+    $postTable = App::getInstance()->getTable('Post');
+
+
+    $posts = $postTable->lastByCategory($_POST['id']);
+
+    foreach($posts as $post) {
+        //var_dump($post);die;
+        $result = $postTable->update($post->id, [
+            'categorie_id' => 6,
+        ]);
+    }
+
+    $result = $categoriesTable->delete($_POST['id']);
     header("Location: admin.php?page=categories.index");
 }
