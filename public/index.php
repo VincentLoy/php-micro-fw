@@ -37,6 +37,9 @@ elseif($page === 'post.single') {
 elseif($page === 'login') {
     require ROOT . '/pages/users/login.php';
 }
+elseif($page === 'logout') {
+    require ROOT . '/pages/users/logout.php';
+}
 
 $content = ob_get_clean();
 require ROOT . '/pages/templates/default.php';

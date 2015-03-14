@@ -27,6 +27,24 @@
         <div class="navbar-header">
             <a class="navbar-brand" href="index.php">Project name</a>
         </div>
+
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <?php
+                    if(isset($_SESSION['auth'])) {
+                        echo '<a href="index.php?page=logout"><i class="fa fa-sign-out"></i> Se deconnecter</a>';
+                    }
+                    else{
+                        echo '<a href="index.php?page=login"><i class="fa fa-user"></i> Se connecter</a>';
+                    }
+                ?>
+            </li>
+            <?php
+                if(isset($_SESSION['auth'])) {
+                    echo '<li><a href="admin.php"><i class="fa fa-cog"></i> Administration</a></li>';
+                }
+            ?>
+        </ul>
     </div>
 </nav>
 
