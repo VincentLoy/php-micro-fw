@@ -8,6 +8,10 @@
 
 $posts = App::getInstance()->getTable('Post')->all();
 ?>
+<ul class="nav nav-tabs">
+    <li role="presentation" class="active"><a href="admin.php">Articles</a></li>
+    <li role="presentation"><a href="admin.php?page=categories.index">Categories</a></li>
+</ul>
 
 <h1>Administrer les articles</h1>
 

@@ -8,6 +8,10 @@
 
 $categories = App::getInstance()->getTable('Category')->all();
 ?>
+<ul class="nav nav-tabs">
+    <li role="presentation"><a href="admin.php">Articles</a></li>
+    <li role="presentation" class="active"><a href="admin.php?page=categories.index">Categories</a></li>
+</ul>
 
 <h1>Administrer les categories</h1>
 
