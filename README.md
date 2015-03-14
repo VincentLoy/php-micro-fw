@@ -4,4 +4,4 @@ php web app base
 ####TODO
 - [x] Auth
 - [x] Backend
-- [ ] Make a swaggy MVC
+- [x] Make a swaggy MVC
