@@ -24,22 +24,40 @@ else {
     $page = 'home';
 }
 
-ob_start();
+
 if($page === 'home') {
-    require ROOT . '/pages/posts/home.php';
+    $controller = new \App\Controller\PostsController();
+    $controller->indexAction();
 }
-elseif($page === 'post.categorie') {
-    require ROOT . '/pages/posts/categories.php';
+elseif($page === 'post.category') {
+    $controller = new \App\Controller\PostsController();
+    $controller->categoryAction();
 }
 elseif($page === 'post.single') {
-    require ROOT . '/pages/posts/single.php';
+    $controller = new \App\Controller\PostsController();
+    $controller->showAction();
 }
 elseif($page === 'login') {
-    require ROOT . '/pages/users/login.php';
+    $controller = new \App\Controller\Users\UsersController();
+    $controller->loginAction();
 }
 elseif($page === 'logout') {
-    require ROOT . '/pages/users/logout.php';
+    $controller = new \App\Controller\Users\UsersController();
+    $controller->logoutAction();
 }
-
-$content = ob_get_clean();
-require ROOT . '/pages/templates/default.php';
+elseif($page === 'admin.posts.index') {
+    $controller = new \App\Controller\Admin\PostsController();
+    $controller->indexAction();
+}
+elseif($page === 'admin.posts.add') {
+    $controller = new \App\Controller\Admin\PostsController();
+    $controller->addAction();
+}
+elseif($page === 'admin.posts.edit') {
+    $controller = new \App\Controller\Admin\PostsController();
+    $controller->editAction();
+}
+elseif($page === 'admin.posts.delete') {
+    $controller = new \App\Controller\Admin\PostsController();
+    $controller->deleteAction();
+}
