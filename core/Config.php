@@ -23,7 +23,7 @@ class Config {
      *
      */
     public function __construct($file) {
-        $this->settings = require $file;
+        $this->settings = require($file);
     }
 
     public function get($key) {

@@ -10,7 +10,7 @@
 
 define('ROOT', dirname(__DIR__));
 
-require ROOT.'/app/App.php';
+require ROOT.'/App/App.php';
 
 App::load();
 
@@ -21,43 +21,21 @@ if(isset($_GET['page'])) {
 
 }
 else {
-    $page = 'home';
+    $page = 'posts.index';
 }
 
+/*
+ * Ceci va appeller les pages sous la forme : page=CONTROLLER.ACTION
+ */
+$page = explode('.', $page);
+if($page[0] === 'admin') {
+    $controller = '\App\Controller\Admin\\' .ucfirst($page[1]) . 'Controller';
+    $action = $page[2].'Action';
+}
+else{
+    $controller = '\App\Controller\\' .ucfirst($page[0]) . 'Controller';
+    $action = $page[1].'Action';
+}
 
-if($page === 'home') {
-    $controller = new \App\Controller\PostsController();
-    $controller->indexAction();
-}
-elseif($page === 'post.category') {
-    $controller = new \App\Controller\PostsController();
-    $controller->categoryAction();
-}
-elseif($page === 'post.single') {
-    $controller = new \App\Controller\PostsController();
-    $controller->showAction();
-}
-elseif($page === 'login') {
-    $controller = new \App\Controller\Users\UsersController();
-    $controller->loginAction();
-}
-elseif($page === 'logout') {
-    $controller = new \App\Controller\Users\UsersController();
-    $controller->logoutAction();
-}
-elseif($page === 'admin.posts.index') {
-    $controller = new \App\Controller\Admin\PostsController();
-    $controller->indexAction();
-}
-elseif($page === 'admin.posts.add') {
-    $controller = new \App\Controller\Admin\PostsController();
-    $controller->addAction();
-}
-elseif($page === 'admin.posts.edit') {
-    $controller = new \App\Controller\Admin\PostsController();
-    $controller->editAction();
-}
-elseif($page === 'admin.posts.delete') {
-    $controller = new \App\Controller\Admin\PostsController();
-    $controller->deleteAction();
-}
+$controller = new $controller();
+$controller->$action();

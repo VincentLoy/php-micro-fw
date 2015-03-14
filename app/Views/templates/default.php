@@ -32,10 +32,10 @@
             <li>
                 <?php
                     if(isset($_SESSION['auth'])) {
-                        echo '<a href="index.php?page=logout"><i class="fa fa-sign-out"></i> Se deconnecter</a>';
+                        echo '<a href="index.php?page=users.logout"><i class="fa fa-sign-out"></i> Se deconnecter</a>';
                     }
                     else{
-                        echo '<a href="index.php?page=login"><i class="fa fa-user"></i> Se connecter</a>';
+                        echo '<a href="index.php?page=users.login"><i class="fa fa-user"></i> Se connecter</a>';
                     }
                 ?>
             </li>

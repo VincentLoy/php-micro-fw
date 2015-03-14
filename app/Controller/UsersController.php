@@ -6,10 +6,9 @@
  * Time: 17:54
  */
 
-namespace App\Controller\Users;
+namespace App\Controller;
 
 use App;
-use App\Controller\AppController;
 use Core\Auth\DBAuth;
 use Core\HTML\BootstrapForm;
 

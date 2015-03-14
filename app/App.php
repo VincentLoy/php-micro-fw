@@ -7,7 +7,6 @@
  */
 
 use Core\Database;
-use Core\Table\Table;
 use Core\Config;
 use Core\Database\MysqlDatabase;
 
