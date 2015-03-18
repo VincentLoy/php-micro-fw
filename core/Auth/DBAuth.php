@@ -10,6 +10,10 @@ namespace Core\Auth;
 
 use Core\Database\Database;
 
+/**
+ * Class DBAuth
+ * @package Core\Auth
+ */
 class DBAuth {
 
     private $db;
@@ -21,6 +25,9 @@ class DBAuth {
         $this->db = $db;
     }
 
+    /**
+     * @return bool
+     */
     public function getUserId() {
         if($this->logged()) {
             return $_SESSION['auth'];
@@ -48,6 +55,9 @@ class DBAuth {
         return false;
     }
 
+    /**
+     * @return bool
+     */
     public function logged() {
         return isset($_SESSION['auth']);
     }

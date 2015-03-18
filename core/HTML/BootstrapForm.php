@@ -8,7 +8,11 @@
 
 namespace Core\HTML;
 
-
+/**
+ * Class BootstrapForm
+ * @package Core\HTML
+ * Classe se chargant de générer des formulaires pour twitter bootstrap
+ */
 class BootstrapForm extends Form {
 
     /**

@@ -20,12 +20,16 @@ class Config {
     private static $_instance;
 
     /**
-     *
+     * @param $file
      */
     public function __construct($file) {
         $this->settings = require($file);
     }
 
+    /**
+     * @param $key
+     * @return null | array
+     */
     public function get($key) {
 
         if(!isset($this->settings[$key])) {
@@ -34,6 +38,11 @@ class Config {
         return $this->settings[$key];
     }
 
+    /**
+     * @param $file
+     * @return Config
+     * retourne une instance de la configuration
+     */
     public static function getInstance($file) {
         if(is_null(self::$_instance)) {
             self::$_instance = new Config($file);

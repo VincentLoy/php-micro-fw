@@ -10,6 +10,12 @@ namespace Core\Table;
 
 use Core\Database\Database;
 
+/**
+ * Class Table
+ * @package Core\Table
+ * classe se chargant de réaliser les requêtes les plus courantes sur des tables et a être héritée par d'autres
+ * classes plus poussées
+ */
 class Table {
 
     /**
@@ -82,6 +88,10 @@ class Table {
     }
 
 
+    /**
+     * @param $fields
+     * @return mixed
+     */
     public function create($fields) {
 
         $sql_parts = [];

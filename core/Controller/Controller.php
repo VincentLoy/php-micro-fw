@@ -8,6 +8,11 @@
 
 namespace Core\Controller;
 
+/**
+ * Class Controller
+ * @package Core\Controller
+ * Class Controller generique servant a faire hériter les autres controllers de l'application
+ */
 class Controller {
 
     protected $viewPath;

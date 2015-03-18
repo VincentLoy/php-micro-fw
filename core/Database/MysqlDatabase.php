@@ -10,6 +10,11 @@ namespace Core\Database;
 
 use \PDO;
 
+/**
+ * Class MysqlDatabase
+ * @package Core\Database
+ * Classe de connexion a une base de donnée MySQL
+ */
 class MysqlDatabase extends Database {
 
     private $db_name;
@@ -19,6 +24,12 @@ class MysqlDatabase extends Database {
 
     private $pdo;
 
+    /**
+     * @param $db_name
+     * @param string $db_user
+     * @param string $db_pass
+     * @param string $db_host
+     */
     public function __construct($db_name, $db_user = 'root', $db_pass = '', $db_host = 'localhost' ) {
 
         $this->db_name = $db_name;
@@ -28,6 +39,9 @@ class MysqlDatabase extends Database {
 
     }
 
+    /**
+     * @return PDO
+     */
     private function getPDO() {
 
         // permet d'avoir UNE SEULE instance de PDO.
@@ -41,6 +55,12 @@ class MysqlDatabase extends Database {
         return $this->pdo;
     }
 
+    /**
+     * @param $statement
+     * @param null $class_name
+     * @param bool $one
+     * @return array|mixed|\PDOStatement
+     */
     public function query($statement, $class_name = null, $one = false) {
 
         $req = $this->getPDO()->query($statement);
@@ -109,6 +129,9 @@ class MysqlDatabase extends Database {
     }
 
 
+    /**
+     * @return string
+     */
     public function lastInsertId() {
         return $this->getPDO()->lastInsertId();
     }

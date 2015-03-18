@@ -10,11 +10,12 @@ namespace Core;
 
 /**
  * Class Autoloader
+ * @package Core
  */
 class Autoloader {
 
     /**
-     * Enregistre notre autoloader
+     * fonction static
      */
     public static function register() {
 
