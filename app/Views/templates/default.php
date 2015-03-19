@@ -1,5 +1,5 @@
 <?php
-
+ //Template par defaut (header / footer / etc)
 ?>
 
 <!DOCTYPE html>

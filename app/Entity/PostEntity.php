@@ -10,12 +10,23 @@ namespace App\Entity;
 
 use Core\Entity\Entity;
 
+/**
+ * Class PostEntity
+ * @package App\Entity
+ */
 class PostEntity extends Entity{
 
+    /**
+     * @return string
+     */
     public function getUrl() {
         return 'index.php?page=posts.show&id='.$this->id;
     }
 
+    /**
+     * @return string
+     * retourne l'extrait d'un article
+     */
     public function getExtrait() {
 
         $html = "<p>". substr($this->content, 0, 100) . '...</p>';

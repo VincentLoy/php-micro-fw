@@ -17,6 +17,10 @@ use Core\Table\Table;
  */
 class PostTable extends Table {
 
+    /**
+     * @var string
+     * nom de la table dans la base de donnée
+     */
     protected $table = "articles";
 
     /**

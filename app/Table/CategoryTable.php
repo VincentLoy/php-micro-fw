@@ -11,8 +11,16 @@ namespace App\Table;
 
 use Core\Table\Table;
 
+/**
+ * Class CategoryTable
+ * @package App\Table
+ */
 class CategoryTable extends Table{
 
+    /**
+     * @var string
+     * nom de la table dans la base de donnée
+     */
     protected $table = "categories";
 
 }
