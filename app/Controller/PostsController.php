@@ -9,6 +9,8 @@
 namespace App\Controller;
 
 
+use Michelf\Markdown;
+
 class PostsController extends AppController{
 
     public function __construct() {
@@ -20,6 +22,10 @@ class PostsController extends AppController{
     public function indexAction() {
         $posts = $this->Post->last();
         $categories = $this->Category->all();
+
+        foreach($posts as $post){
+            $post->content = Markdown::defaultTransform($post->content);
+        }
 
         $vars = compact('posts', 'categories'); //compact genere un array en fonction de plusieurs variables.
 
@@ -44,6 +50,9 @@ class PostsController extends AppController{
 
     public function showAction() {
         $post = $this->Post->find($_GET['id']);
+
+        $post->content = Markdown::defaultTransform($post->content);
+
 
         if($post === false) {
             $this->notFound();
