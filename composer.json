@@ -1,0 +1,14 @@
+{
+    "name": "Vincent/base_blog",
+    "description": "Configuration Composer de l'application",
+    "require": {
+        "michelf/php-markdown": "1.5.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vincent Loy",
+            "email": "vincent.loy1@gmail.com"
+        }
+    ]
+}
