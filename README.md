@@ -5,3 +5,4 @@ php web app base
 - [x] Auth
 - [x] Backend
 - [x] Make a swaggy MVC
+- [x] Add Composer
